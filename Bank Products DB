@@ -26,21 +26,21 @@ VALUES
     (15, 'Auto Loan', 'Loan', 4.25, 0.00, 20000.00);
 
 
-#Below are queries I ran against the DB to get specified results
+#Below are queries I ran against the DB to get specified results in each query/ 
 
-#I ran this query on the DB to get all product names and present them in ascending order.
+#Get all product names and present them in ascending order.
 SELECT product_name
 FROM bank_products
 ORDER BY product_name asc;
 
-#I ran this query to get ONLY product types of Checking or Savings from the DB.
+#Get ONLY product types of Checking or Savings.
 SELECT product_name
 FROM bank_products
 WHERE product_type="Savings"
 OR product_type="Checking"
 ORDER BY product_type asc;
 
-#I ran this query to get savings accounts with at least an interest rate of .75 or greater and had no monthly fee from the DB. 
+#Get savings accounts with at least an interest rate of .75 or greater and had no monthly fee.
 SELECT product_name, interest_rate
 FROM bank_products
 WHERE product_type="Savings"
