@@ -1,0 +1,57 @@
+CREATE TABLE marathon (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+   participant_name TEXT,
+   previous_experience TEXT,
+   completion_fraction REAL);
+
+INSERT INTO marathon (participant_name, previous_experience,  completion_fraction)
+    VALUES ("Sadie Hawkins", "yes", 1);
+INSERT INTO marathon (participant_name, previous_experience,  completion_fraction)
+    VALUES ("Brandon Flowers", "no", 0.241);
+INSERT INTO marathon (participant_name, previous_experience,  completion_fraction)
+    VALUES ("Michael Scott", "no", 0.804);
+INSERT INTO marathon (participant_name, previous_experience,  completion_fraction)
+    VALUES ("Karamo Brown", "yes", 0.9512);
+INSERT INTO marathon (participant_name, previous_experience,  completion_fraction)
+    VALUES ("Antoni Porowski", "yes", 0.640);
+INSERT INTO marathon (participant_name, previous_experience,  completion_fraction)
+    VALUES ("Rajnighanda Kapoor", "no", 1);
+
+-- Without using ROUND
+SELECT participant_name
+,completion_fraction*100 as completion_percent
+FROM marathon
+WHERE participant_name="Karamo Brown";
+
+-- Using ROUND
+SELECT participant_name
+,ROUND(completion_fraction*100) as completion_percent
+FROM marathon
+WHERE participant_name="Karamo Brown";
+
+-- Using ROUND and specifying how many decimals you want in your result
+SELECT participant_name
+,ROUND(completion_fraction*100,1) as completion_percent
+FROM marathon
+WHERE participant_name="Karamo Brown";
+
+select participant_name
+,ROUND(completion_fraction*100,1) as completion_percent
+from marathon;
+
+-- Show how many employees completed each quarter of the marathon (75% or more, 50%, 25%, or under 25%).
+
+--You can output the quarter_completed by using CASE with the completion_fraction column.
+--You can output '75%+' for completing >= .75,
+--'50%+' for completing >= .50,
+--'25%+' for completing >= .25,
+--and 'Under 25%' otherwise.
+--Use COUNT and GROUP BY to show the number of employees within each of those quarters.
+
+select count(*),
+case when completion_fraction >=.75 then "75%"
+when completion_fraction >=.50 then "50%"
+when completion_fraction >=.25 then "25%"
+else "Under 25%" end as "quarter_completed"
+from marathon
+group by quarter_completed;
