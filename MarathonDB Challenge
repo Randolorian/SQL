@@ -49,9 +49,9 @@ from marathon;
 --Use COUNT and GROUP BY to show the number of employees within each of those quarters.
 
 select count(*),
-case when completion_fraction >=.75 then "75%"
-when completion_fraction >=.50 then "50%"
-when completion_fraction >=.25 then "25%"
+case when completion_fraction >=.75 then "75%+"
+when completion_fraction >=.50 then "50+%"
+when completion_fraction >=.25 then "25+%"
 else "Under 25%" end as "quarter_completed"
 from marathon
 group by quarter_completed;
