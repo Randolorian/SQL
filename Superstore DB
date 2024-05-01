@@ -41,3 +41,9 @@ SELECT avg(price)
 FROM superstore
 WHERE category="Kitchen Supplies"
 
+#Show items that have a current stock of greater than 25.
+select *
+from superstore
+where stock_quantity>"25"
+order by stock_quantity;
+
